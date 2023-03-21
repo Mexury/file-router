@@ -33,7 +33,7 @@ export default async (app, port = 3000) => {
                 
                 if (methods.includes(method)) {
                     success++
-                    let file = await import(`../routes/${item}`)
+                    let file = await import(`../../routes/${item}`)
                     let routes = file.routes || [ item.split('.')[0] ]
                     app[method](routes, async (req, res) => file.default(req, res))
 
