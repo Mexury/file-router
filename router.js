@@ -4,7 +4,7 @@ import fs from 'fs/promises'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-global.__basedir = __dirname
+global.__basedir = path.join(__dirname, '../../')
 
 export default async (app, port = 3000) => {
     const methods = [
@@ -39,7 +39,6 @@ export default async (app, port = 3000) => {
 
                     console.log(`✅ ${methodName} - Loaded route ${item.split('.')[0]}`)
                 } else {
-                    // error
                     console.log(`❌ ${methodName} - Unable to load route ${item.split('.')[0]}`)
                 }
             }
