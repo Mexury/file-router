@@ -1,0 +1,28 @@
+{
+  "name": "file-router",
+  "version": "1.0.0",
+  "description": "A simple file-based router for NodeJS",
+  "main": "router.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mexury/file-router.git"
+  },
+  "keywords": [
+    "file-routing",
+    "file-router",
+    "router",
+    "routing"
+  ],
+  "author": "Mexury",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Mexury/file-router/issues"
+  },
+  "homepage": "https://github.com/Mexury/file-router#readme"
+}
