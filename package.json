@@ -1,6 +1,6 @@
 {
-  "name": "file-router",
-  "version": "1.0.0",
+  "name": "mx-file-router",
+  "version": "1.0.1",
   "description": "A simple file-based router for NodeJS",
   "main": "router.js",
   "dependencies": {
@@ -19,6 +19,7 @@
     "router",
     "routing"
   ],
+  "type": "module",
   "author": "Mexury",
   "license": "GPL-3.0-or-later",
   "bugs": {

@@ -1,4 +1,10 @@
+import path from 'path'
+import { fileURLToPath } from 'url'
 import fs from 'fs/promises'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+global.__basedir = __dirname
 
 export default async (app, port = 3000) => {
     const methods = [
