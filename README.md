@@ -1,4 +1,4 @@
-![mx-file-router logo](https://github.com/Mexury/file-router/blob/master/mx-file-router.png?raw=true)
+![mx-file-router logo](https://i.imgur.com/J2tmcZp.png)
 
   Fast, light-weight file based routing solution for [Node.js](http://nodejs.org).
 
@@ -10,12 +10,11 @@
 ## Usage
 
 ```js
-const express = require('express')
+import express from 'express'
+import Router from 'mx-file-router'
 const app = express()
 
-const Router = require('mx-file-router')
 Router(app, 3000)
-
 // Port will default to 3000.
 ```
 
