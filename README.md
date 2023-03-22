@@ -1,4 +1,4 @@
-[![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/)
+![mx-file-router logo](https://github.com/Mexury/file-router/blob/master/mx-file-router.png?raw=true)
 
   Fast, light-weight file based routing solution for [Node.js](http://nodejs.org).
 
