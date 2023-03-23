@@ -6,6 +6,12 @@
   [![NPM Install Size][npm-install-size-image]][npm-install-size-url]
   [![NPM Downloads][npm-downloads-image]][npm-downloads-url]
 
+---
+## Version notices
+
+> **v1.1.0_beta**
+> \+ /routes subfolder support`(not tested, might not work as expected)`
+---
 
 ## Usage
 

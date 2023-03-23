@@ -6,22 +6,17 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 global.__basedir = path.join(__dirname, '../../')
 
-export default async (app, port = 3000) => {
-    const methods = [
-        'get', 'head', 'post', 'put', 'delete', 'connect', 'options', 'trace', 'patch'
-    ]
-
-    app.listen(port, async () => {
-        console.log(`Server is running @ http://localhost:${port}`)
-    })
-
+const readDirectory = async (directory, parent) => {
     try {
-        let items = await fs.readdir(`${__basedir}/routes`)
+        let route = `${parent}/${directory}`
         let success = 0
+        let items = await fs.readdir(route)
+        const methods = [ 'get', 'head', 'post', 'put', 'delete', 'connect', 'options', 'trace', 'patch' ]
 
         for (const item of items) {
-            let stat = await fs.lstat(`${__basedir}/routes/${item}`)
+            let stat = await fs.lstat(`${route}/${item}`)
 
+            if (stat.isDirectory()) readDirectory(item, route)
             if (stat.isFile()) {
                 let extension = item.split('.').filter(Boolean).splice(1).join('.').toLowerCase()
                 let method = extension.split('.')[0]
@@ -33,7 +28,7 @@ export default async (app, port = 3000) => {
                 
                 if (methods.includes(method)) {
                     success++
-                    let file = await import(`../../routes/${item}`)
+                    let file = await import(`../../routes/${path.join(route, item).split('routes\\')[1]}`)
                     let routes = file.routes || [ item.split('.')[0] ]
                     app[method](routes, async (req, res) => file.default(req, res))
 
@@ -43,9 +38,13 @@ export default async (app, port = 3000) => {
                 }
             }
         }
-        console.log()
-        console.log(`✅ (${success}/${items.length}) routes loaded successfully.`)
     } catch(err) {
         console.error(err)
     }
+}
+
+export default async (app, port = 3000) => {
+    global.app = app
+    app.listen(port, async () => console.log(`Server is running @ http://localhost:${port}`))
+    readDirectory(``, `${__basedir}/routes`)
 }
