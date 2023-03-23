@@ -9,7 +9,7 @@
 ---
 ## Version notices
 
-> **v1.1.0_beta**
+> **v1.1.0beta**
 > \+ /routes subfolder support`(not tested, might not work as expected)`
 ---
 
