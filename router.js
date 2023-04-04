@@ -9,6 +9,7 @@ module.exports = async (app, port = 3000) => {
         try {
             let route = `${parent}/${directory}`
             let success = 0
+            let error = false
             let items = await fs.readdir(route)
             const methods = [ 'get', 'head', 'post', 'put', 'delete', 'connect', 'options', 'trace', 'patch' ]
 
@@ -28,13 +29,16 @@ module.exports = async (app, port = 3000) => {
                     if (methods.includes(method)) {
                         success++
                         let file = await import(`../../routes/${path.join(route, item).split('routes\\')[1]}`)
-                        let routes = file.routes || [ item.split('.')[0] ]
-                        app[method](routes, async (req, res) => file.default(req, res))
+                        if (file) {
+                            if (file.routes && file.register) {
+                                let routes = file.routes || [ `/${item.split('.')[0]}` ]
+                                app[method](routes, async (req, res) => file.register(req, res))
+                            } else error = true
+                        } else error = true
+                    } else error = true
 
-                        console.log(`✅ ${methodName} - Loaded route ${item.split('.')[0]}`)
-                    } else {
-                        console.log(`❌ ${methodName} - Unable to load route ${item.split('.')[0]}`)
-                    }
+                    if (error) console.log(`❌ ${methodName} - Unable to load route ${item}`)
+                    else console.log(`✅ ${methodName} - Loaded route ${item}`)
                 }
             }
         } catch(err) {

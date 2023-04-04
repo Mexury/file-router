@@ -1,6 +1,6 @@
 {
   "name": "mx-file-router",
-  "version": "1.2.0beta",
+  "version": "1.2.0",
   "description": "A simple file-based router for NodeJS",
   "main": "router.js",
   "dependencies": {
