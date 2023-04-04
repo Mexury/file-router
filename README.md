@@ -9,6 +9,9 @@
 ---
 ## Version notices
 
+> **v1.2.0beta**
+> \+ Added support for CJS files`(lightly tested, might not work as expected)`
+>
 > **v1.1.0beta**
 > \+ /routes subfolder support`(not tested, might not work as expected)`
 ---
@@ -16,8 +19,8 @@
 ## Usage
 
 ```js
-import express from 'express'
-import Router from 'mx-file-router'
+const express = require('express')
+const Router = require('mx-file-router')
 const app = express()
 
 Router(app, 3000)
